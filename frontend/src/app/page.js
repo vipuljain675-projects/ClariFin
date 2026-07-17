@@ -129,7 +129,7 @@ export default function Home() {
           </div>
           <div>
             <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-              Multimodal Earnings Analyzer
+              Clarifin AI
             </h1>
             <p className="text-xs text-zinc-400">SEC Filings vs CEO Audio Calls</p>
           </div>
@@ -449,7 +449,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-zinc-800 mt-auto py-4 text-center text-xs text-zinc-500">
-        © 2026 Multimodal Earnings Analyzer. Built with Next.js, FastAPI, ChromaDB and Gemini.
+        © 2026 Clarifin AI. Built with Next.js, FastAPI, ChromaDB and Gemini.
       </footer>
     </div>
   );

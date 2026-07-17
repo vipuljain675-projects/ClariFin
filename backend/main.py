@@ -40,13 +40,14 @@ async def upload_file(
     quarter: str = Form(...)
 ):
     try:
-        # Create directory for the file
+        # Create directory for the file resolved absolutely inside backend/data/
+        base_dir = os.path.dirname(os.path.abspath(__file__))
         if file_type == "pdf":
-            target_dir = f"data/pdf/{company}/{quarter}"
+            target_dir = os.path.join(base_dir, "data", "pdf", company, quarter)
         elif file_type == "audio":
-            target_dir = f"data/audio/{company}/{quarter}"
+            target_dir = os.path.join(base_dir, "data", "audio", company, quarter)
         else:
-            target_dir = f"data/transcripts/{company}/{quarter}"
+            target_dir = os.path.join(base_dir, "data", "transcripts", company, quarter)
             
         os.makedirs(target_dir, exist_ok=True)
         
@@ -71,8 +72,9 @@ async def ingest_data(
     try:
         ingestor = Ingestor()
         
-        # 1. PDF processing
-        pdf_dir = f"data/pdf/{company}/{quarter}"
+        # 1. PDF processing (resolved absolutely to backend/data/)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        pdf_dir = os.path.join(base_dir, "data", "pdf", company, quarter)
         pdf_files = [f for f in os.listdir(pdf_dir) if f.lower().endswith(".pdf")] if os.path.exists(pdf_dir) else []
         
         if not pdf_files:
@@ -82,8 +84,8 @@ async def ingest_data(
         pdf_chunks_count = ingestor.process_pdf(pdf_path, company, quarter)
         
         # 2. Audio Transcript processing
-        transcript_dir = f"data/transcripts/{company}/{quarter}"
-        audio_dir = f"data/audio/{company}/{quarter}"
+        transcript_dir = os.path.join(base_dir, "data", "transcripts", company, quarter)
+        audio_dir = os.path.join(base_dir, "data", "audio", company, quarter)
         os.makedirs(transcript_dir, exist_ok=True)
         
         transcript_files = []

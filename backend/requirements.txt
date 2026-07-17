@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+chromadb
+google-genai
+pdfplumber
+python-dotenv
+pydantic
+python-multipart
+pandas
+openai

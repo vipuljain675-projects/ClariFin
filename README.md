@@ -155,3 +155,4 @@ Multimodal-Ml-project/
    *   Select **Or Transcript File**: Choose `backend/data/transcripts/Apple/Q3-2024/apple_q3_2024_transcript.json`.
 4. Click **Ingest & Analyze Core**.
 5. Switch to the **Comparative Query Panel**, type a financial query (e.g. *"Did the CEO sound confident about their debt?"*), and hit **Compare**!
+# Estato-Ai
